@@ -642,7 +642,7 @@ namespace ServiceStack.ServiceClient.Web
                         //Console.WriteLine("Response: " + strResponse);
                         //stream.Position = 0;
                         serviceEx.ResponseBody = errorResponse.GetResponseStream().ReadFully().FromUtf8Bytes();
-#if !MONOTOUCH
+#if !(MONOTOUCH || __ANDROID__)
                         // MonoTouch throws NotSupportedException when setting System.Net.WebConnectionStream.Position
                         // Not sure if the stream is used later though, so may have to copy to MemoryStream and
                         // pass that around instead after this point?
